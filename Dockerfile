@@ -4,6 +4,7 @@
 
 FROM ubuntu:latest
 ENV ACCEPT_SERVER_LICENSE_TERMS=false
+ENV CODE_SERVER_PORT=8000
 WORKDIR /usr/app
 
 # install the dependencies

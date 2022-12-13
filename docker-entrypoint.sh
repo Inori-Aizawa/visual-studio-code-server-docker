@@ -16,9 +16,10 @@ else
     echo "token not set"
     export CODE_SERVER_TOKEN="--without-connection-token"
 fi
+
 if [ "$CODE_SERVER_LOCAL" = "true" ]; then
     echo "server is going to be hosted locally"
-    dbus-run-session -- sh -c "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve-local --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --host $CODE_SERVER_HOST --server-data-dir "/vscode-server-data" $CODE_SERVER_TOKEN"
+    dbus-run-session -- sh -c "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve-local --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --host $CODE_SERVER_HOST --server-data-dir "/vscode-server-data" -p $CODE_SERVER_PORT $CODE_SERVER_TOKEN"
 
     else
     echo "server is going to be hosted externally"
