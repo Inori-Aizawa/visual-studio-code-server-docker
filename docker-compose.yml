@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  visual-studio-code-server:
+    volumes:
+      - './config:/vscode-server-data'
+      - './data:/root/.vscode-server/'
+      - './user:/home/'
+      - './keyring:/root/.local/share/keyrings/'
+    ports:
+      - '8000:8000'
+    env_file:
+      - '.env' # create .env file 
+    image: inori_aizawa/visual-studio-code-server:latest
+# command to build and run the docker image
+# docker build -t inori_aizawa/visual-studio-code-server . && docker compose up

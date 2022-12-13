@@ -1,0 +1,5 @@
+data/
+config/
+keyring/
+user/
+.env
