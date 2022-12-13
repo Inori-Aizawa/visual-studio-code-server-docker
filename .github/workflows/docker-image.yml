@@ -1,18 +1,20 @@
-name: Docker Image CI
+name: Build Docker Image
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - '[main]'
+
+# Required for secrets.GITHUB_TOKEN
+permissions:
+  packages: write
+  contents: read
 
 jobs:
-
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag inori-aizawa/visual-studio-code-server:$(date +%s)
+      - name: GHCR-Action
+        uses: KuhlTime/ghcr-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
