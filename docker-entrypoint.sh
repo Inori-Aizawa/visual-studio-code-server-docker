@@ -19,11 +19,12 @@ fi
 
 if [ "$CODE_SERVER_LOCAL" = "true" ]; then
     echo "server is going to be hosted locally"
-    dbus-run-session -- sh -c "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve-local --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --host $CODE_SERVER_HOST --server-data-dir "/vscode-server-data" -p $CODE_SERVER_PORT $CODE_SERVER_TOKEN"
+    dbus-run-session -- sh "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve-local --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --host $CODE_SERVER_HOST --server-data-dir "/vscode-server-data" -p $CODE_SERVER_PORT $CODE_SERVER_TOKEN"
 
     else
     echo "server is going to be hosted externally"
-    dbus-run-session -- sh -c "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve --random-name --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --server-data-dir "/vscode-server-data""
+    dbus-run-session -- sh "(echo $CREDSTOREPASS | gnome-keyring-daemon --unlock) && code-server serve --random-name --accept-server-license-terms --telemetry-level $TELEMETRY_LEVEL --server-data-dir "/vscode-server-data""
 
 fi
 # Run a dbus session, which unlocks the gnome-keyring and runs the VS Code Server inside of it
+# https://github.com/jaraco/keyring/blob/main/README.rst#using-keyring-on-headless-linux-systems
