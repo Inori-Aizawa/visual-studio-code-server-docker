@@ -1,5 +1,6 @@
 #!/bin/sh
 export DISPLAY=:0.0
+dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
 if [ "$ACCEPT_SERVER_LICENSE_TERMS" = "true" ]; then
     echo "TOS ACCEPTED"
 else

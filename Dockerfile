@@ -13,6 +13,8 @@ RUN apt-get update \
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 #download vscode-server 
 RUN wget https://aka.ms/install-vscode-server/setup.sh
+RUN mkdir -p /var/run/dbus
+
 # make the setup.sh executable
 RUN chmod +x setup.sh /docker-entrypoint.sh
 # run the setup.sh and install vscode-server
