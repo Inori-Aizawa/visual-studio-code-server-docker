@@ -1,5 +1,5 @@
 #!/bin/sh
-# export DISPLAY=:0.0
+export DISPLAY=:0.0
 if [ "$ACCEPT_SERVER_LICENSE_TERMS" = "true" ]; then
     echo "TOS ACCEPTED"
 else
